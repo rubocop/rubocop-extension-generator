@@ -32,7 +32,7 @@ Creating gem 'rubocop-foobar'...
       create  rubocop-foobar/bin/console
       create  rubocop-foobar/bin/setup
       create  rubocop-foobar/.gitignore
-Initializing git repo in /tmp/tmp.WB5WF1deee/rubocop-foobar
+Initializing git repo in /tmp/tmp.Gu7G94wX00/rubocop-foobar
 Gem 'rubocop-foobar' was successfully created. For more information on making a RubyGem visit https://bundler.io/guides/creating_gem.html
 create rubocop-foobar/lib/rubocop-foobar.rb
 create rubocop-foobar/lib/rubocop/foobar/inject.rb
@@ -40,6 +40,10 @@ create rubocop-foobar/lib/rubocop/cop/foobar_cops.rb
 create rubocop-foobar/config/default.yml
 create rubocop-foobar/spec/spec_helper.rb
 create rubocop-foobar/.rspec
+update lib/rubocop/foobar.rb
+update lib/rubocop/foobar.rb
+update lib/rubocop/foobar/version.rb
+update rubocop-foobar.gemspec
 update rubocop-foobar.gemspec
 update Rakefile
 update Gemfile
