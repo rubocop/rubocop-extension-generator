@@ -18,7 +18,7 @@ module CustomCopsGenerator
 
         RuboCop::#{classname}::Inject.defaults!
 
-        require_relative '#{cops_file_name.sub(/\.rb$/, '')}'
+        require_relative '#{cops_file_name.sub(/\.rb$/, '').sub(/^lib\//, '')}'
       RUBY
 
       put "lib/#{dirname}/inject.rb", <<~RUBY
@@ -77,7 +77,7 @@ module CustomCopsGenerator
         --require spec_helper
       TEXT
 
-      patch "#{dirname}.rb", /^  end\nend/, <<~RUBY
+      patch "lib/#{dirname}.rb", /^  end\nend/, <<~RUBY
             PROJECT_ROOT   = Pathname.new(__dir__).parent.parent.expand_path.freeze
             CONFIG_DEFAULT = PROJECT_ROOT.join('config', 'default.yml').freeze
             CONFIG         = YAML.safe_load(CONFIG_DEFAULT.read).freeze
@@ -87,8 +87,8 @@ module CustomCopsGenerator
         end
       RUBY
 
-      patch "#{dirname}.rb", 'module Rubocop', 'module RuboCop'
-      patch "#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
+      patch "lib/#{dirname}.rb", 'module Rubocop', 'module RuboCop'
+      patch "lib/#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
       patch "#{name}.gemspec", 'Rubocop', 'RuboCop'
 
       patch "#{name}.gemspec", /^end/, <<~RUBY
@@ -148,12 +148,12 @@ module CustomCopsGenerator
       path.write(content)
     end
 
-    private def patch(path, pattern, content)
+    private def patch(path, pattern, replacement)
       puts "update #{path}"
       path = root_path / path
-      content = path.read
-      raise "Cannot apply patch for #{path} because #{pattern} is missing" unless content.match?(pattern)
-      path.write content.sub(pattern, content)
+      file = path.read
+      raise "Cannot apply patch for #{path} because #{pattern} is missing" unless file.match?(pattern)
+      path.write file.sub(pattern, replacement)
     end
 
     private def root_path
