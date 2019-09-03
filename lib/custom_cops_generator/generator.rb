@@ -77,6 +77,20 @@ module CustomCopsGenerator
         --require spec_helper
       TEXT
 
+      patch "#{dirname}.rb", /^  end\nend/, <<~RUBY
+            PROJECT_ROOT   = Pathname.new(__dir__).parent.parent.expand_path.freeze
+            CONFIG_DEFAULT = PROJECT_ROOT.join('config', 'default.yml').freeze
+            CONFIG         = YAML.safe_load(CONFIG_DEFAULT.read).freeze
+
+            private_constant(:CONFIG_DEFAULT, :PROJECT_ROOT)
+          end
+        end
+      RUBY
+
+      patch "#{dirname}.rb", 'module Rubocop', 'module RuboCop'
+      patch "#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
+      patch "#{name}.gemspec", 'Rubocop', 'RuboCop'
+
       patch "#{name}.gemspec", /^end/, <<~RUBY
 
           spec.add_runtime_dependency 'rubocop'
@@ -137,7 +151,9 @@ module CustomCopsGenerator
     private def patch(path, pattern, content)
       puts "update #{path}"
       path = root_path / path
-      path.write path.read.sub(pattern, content)
+      content = path.read
+      raise "Cannot apply patch for #{path} because #{pattern} is missing" unless content.match?(pattern)
+      path.write content.sub(pattern, content)
     end
 
     private def root_path
