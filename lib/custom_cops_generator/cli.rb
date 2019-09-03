@@ -22,13 +22,5 @@ module CustomCopsGenerator
 
       Generator.new(name).generate
     end
-
-    private def to_dirname(name)
-      name.sub('-', '/')
-    end
-
-    private def to_classname
-      
-    end
   end
 end
