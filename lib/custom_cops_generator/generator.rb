@@ -18,7 +18,7 @@ module CustomCopsGenerator
 
         RuboCop::#{classname}::Inject.defaults!
 
-        require_relative '#{cops_file_name}'
+        require_relative '#{cops_file_name.sub(/\.rb$/, '')}'
       RUBY
 
       put "lib/#{dirname}/inject.rb", <<~RUBY
