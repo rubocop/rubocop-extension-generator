@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{A generator of RuboCop's custom cops gem}
   spec.homepage      = "https://github.com/pocke/custom_cops_generator"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.licenses = ['MIT']
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
