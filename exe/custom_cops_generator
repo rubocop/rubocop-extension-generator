@@ -1,0 +1,5 @@
+#!ruby
+
+require 'custom_cops_generator'
+
+CustomCopsGenerator::CLI.run(ARGV)
