@@ -55,7 +55,7 @@ module CustomCopsGenerator
       put 'spec/spec_helper.rb', <<~RUBY
         # frozen_string_literal: true
 
-        require '#{dirname}'
+        require '#{name}'
         require 'rubocop/rspec/support'
 
         RSpec.configure do |config|
