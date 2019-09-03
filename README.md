@@ -1,8 +1,6 @@
 # CustomCopsGenerator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/custom_cops_generator`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A generator of RuboCop's custom cops gem.
 
 ## Installation
 
@@ -22,7 +20,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ custom_cops_generator rubocop-foobar
+Creating gem 'rubocop-foobar'...
+      create  rubocop-foobar/Gemfile
+      create  rubocop-foobar/lib/rubocop/foobar.rb
+      create  rubocop-foobar/lib/rubocop/foobar/version.rb
+      create  rubocop-foobar/rubocop-foobar.gemspec
+      create  rubocop-foobar/Rakefile
+      create  rubocop-foobar/README.md
+      create  rubocop-foobar/bin/console
+      create  rubocop-foobar/bin/setup
+      create  rubocop-foobar/.gitignore
+Initializing git repo in /tmp/tmp.WB5WF1deee/rubocop-foobar
+Gem 'rubocop-foobar' was successfully created. For more information on making a RubyGem visit https://bundler.io/guides/creating_gem.html
+create rubocop-foobar/lib/rubocop-foobar.rb
+create rubocop-foobar/lib/rubocop/foobar/inject.rb
+create rubocop-foobar/lib/rubocop/cop/foobar_cops.rb
+create rubocop-foobar/config/default.yml
+create rubocop-foobar/spec/spec_helper.rb
+create rubocop-foobar/.rspec
+update rubocop-foobar.gemspec
+update Rakefile
+update Gemfile
+
+It's done! You can start developing a new extension of RuboCop in rubocop-foobar.
+For the next step, you can use the cop generator.
+
+  $ bundle exec rake 'new_cop[Foobar/SuperCoolCopName]'
+```
 
 ## Development
 
