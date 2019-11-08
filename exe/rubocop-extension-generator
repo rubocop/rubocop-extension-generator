@@ -1,0 +1,5 @@
+#!ruby
+
+require 'rubocop/extension/generator'
+
+RuboCop::Extension::Generator::CLI.run(ARGV)

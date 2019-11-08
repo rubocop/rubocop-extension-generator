@@ -1,4 +1,4 @@
-# CustomCopsGenerator
+# rubocop-extension-generator
 
 A generator of RuboCop's custom cops gem.
 
@@ -7,7 +7,7 @@ A generator of RuboCop's custom cops gem.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'custom_cops_generator'
+gem 'rubocop-extension-generator'
 ```
 
 And then execute:
@@ -16,12 +16,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install custom_cops_generator
+    $ gem install rubocop-extension-generator
 
 ## Usage
 
 ```
-$ custom_cops_generator rubocop-foobar
+$ rubocop-extension-generator rubocop-foobar
 Creating gem 'rubocop-foobar'...
       create  rubocop-foobar/Gemfile
       create  rubocop-foobar/lib/rubocop/foobar.rb
@@ -62,5 +62,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pocke/custom_cops_generator.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rubocop-hq/rubocop-extension-generator.
 
