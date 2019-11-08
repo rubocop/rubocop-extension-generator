@@ -6,8 +6,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Masataka Pocke Kuwabara"]
   spec.email         = ["kuwabara@pocke.me"]
 
-  spec.summary       = %q{A generator of RuboCop's custom cops gem}
-  spec.description   = %q{A generator of RuboCop's custom cops gem}
+  # spec.summary       = %q{A generator of RuboCop's custom cops gem}
+  # spec.description   = %q{A generator of RuboCop's custom cops gem}
+  spec.summary       = %q{DEPRECATED: Use rubocop-extension-generator gem}
+  spec.description   = %q{DEPRECATED: Use rubocop-extension-generator gem}
   spec.homepage      = "https://github.com/pocke/custom_cops_generator"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
   spec.licenses = ['MIT']
@@ -29,4 +31,9 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'bundler'
   spec.add_runtime_dependency 'activesupport'
+
+  spec.post_install_message = <<~MESSAGE
+    custom_cops_generator gem has been renamed rubocop-extension-generator.
+    Please use rubocop-extension-generator instead of this gem.
+  MESSAGE
 end
