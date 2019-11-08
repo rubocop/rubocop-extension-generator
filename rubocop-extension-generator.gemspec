@@ -1,14 +1,14 @@
-require_relative 'lib/custom_cops_generator/version'
+require_relative 'lib/rubocop/extension/generator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "custom_cops_generator"
-  spec.version       = CustomCopsGenerator::VERSION
+  spec.name          = "rubocop-extension-generator"
+  spec.version       = RuboCop::Extension::Generator::VERSION
   spec.authors       = ["Masataka Pocke Kuwabara"]
   spec.email         = ["kuwabara@pocke.me"]
 
   spec.summary       = %q{A generator of RuboCop's custom cops gem}
   spec.description   = %q{A generator of RuboCop's custom cops gem}
-  spec.homepage      = "https://github.com/pocke/custom_cops_generator"
+  spec.homepage      = "https://github.com/rubocop-hq/rubocop-extension-generator"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
   spec.licenses = ['MIT']
 
