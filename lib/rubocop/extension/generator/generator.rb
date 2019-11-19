@@ -79,6 +79,12 @@ module RuboCop
             --require spec_helper
           TEXT
 
+          put '.rubocop.yml', <<~YML
+            Naming/FileName:
+             Exclude:
+               - lib/#{name}.rb
+          YML
+
           patch "lib/#{dirname}.rb", /^  end\nend/, <<~RUBY
                 PROJECT_ROOT   = Pathname.new(__dir__).parent.parent.expand_path.freeze
                 CONFIG_DEFAULT = PROJECT_ROOT.join('config', 'default.yml').freeze
