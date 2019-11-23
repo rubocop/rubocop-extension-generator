@@ -60,6 +60,10 @@ After checking out the repo, run `bin/setup` to install dependencies. You can al
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Testing
+
+You can execute a smoke test with `ruby smoke/smoke.rb`. Check it is success before open a pull request.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/rubocop-hq/rubocop-extension-generator.
