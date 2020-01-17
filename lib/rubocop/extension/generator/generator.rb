@@ -140,6 +140,8 @@ module RuboCop
             gem 'rspec'
           RUBY
 
+          patch 'README.md', /^gem '#{name}'$/, "gem '#{name}', require: false"
+
           puts
           puts <<~MESSAGE
             It's done! You can start developing a new extension of RuboCop in #{root_path}.
