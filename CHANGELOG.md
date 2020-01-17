@@ -1,5 +1,7 @@
 # master (unreleased)
 
+* [#5](https://github.com/rubocop-hq/rubocop-extension-generator/pull/5): Add `require: false` to sample code in README
+
 # v0.2.1
 
 * [#4](https://github.com/rubocop-hq/rubocop-extension-generator/pull/4): Exclude main lib file from Naming/FileName cop
