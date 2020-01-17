@@ -1,5 +1,7 @@
 # master (unreleased)
 
+# v0.2.2
+
 * [#5](https://github.com/rubocop-hq/rubocop-extension-generator/pull/5): Add `require: false` to sample code in README
 
 # v0.2.1
