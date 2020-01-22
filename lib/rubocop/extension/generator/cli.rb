@@ -19,6 +19,7 @@ module RuboCop
         def run
           # For --help
           opt = OptionParser.new(BANNER)
+          opt.version = VERSION
           args = opt.parse(@argv)
 
           name = args.first
