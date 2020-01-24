@@ -22,7 +22,16 @@ Dir.mktmpdir('-rubocop-extension-generator-smoke') do |base_dir|
 
   gemspec_path.write gemspec
 
+  config_path = gem_dir / '.rubocop.yml'
+  config_path.write config_path.read + <<~CONFIG
+    require: rubocop-smoke
+
+    Smoke/Foo:
+      Enabled: true
+  CONFIG
+
   system('bundle', 'install', exception: true, chdir: gem_dir)
   system('bundle', 'exec', 'rake', 'new_cop[Smoke/Foo]', exception: true, chdir: gem_dir)
+  system('bundle', 'exec', 'rubocop', '--display-only-fail-level-offenses', '--fail-level', 'F', exception: true, chdir: gem_dir)
   system('bundle', 'exec', 'rake', 'spec', exception: true, chdir: gem_dir)
 end

@@ -18,9 +18,9 @@ module RuboCop
             require_relative '#{dirname}/version'
             require_relative '#{dirname}/inject'
 
-            RuboCop::#{classname}::Inject.defaults!
-
             require_relative '#{cops_file_name.sub(/\.rb$/, '').sub(/^lib\//, '')}'
+
+            RuboCop::#{classname}::Inject.defaults!
           RUBY
 
           put "lib/#{dirname}/inject.rb", <<~RUBY
@@ -35,9 +35,7 @@ module RuboCop
                 module Inject
                   def self.defaults!
                     path = CONFIG_DEFAULT.to_s
-                    hash = ConfigLoader.send(:load_yaml_configuration, path)
-                    config = Config.new(hash, path)
-                    puts "configuration from \#{path}" if ConfigLoader.debug?
+                    config = ConfigLoader.load_file(path)
                     config = ConfigLoader.merge_with_default(config, path)
                     ConfigLoader.instance_variable_set(:@default_configuration, config)
                   end
