@@ -1,5 +1,9 @@
 # master (unreleased)
 
+# v0.3.0
+
+* [#8](https://github.com/rubocop-hq/rubocop-extension-generator/pull/8): Enable to work "Exclude" in AllCops section
+
 # v0.2.3
 
 * [#7](https://github.com/rubocop-hq/rubocop-extension-generator/pull/7): Improve CLI
