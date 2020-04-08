@@ -98,6 +98,7 @@ module RuboCop
           patch "lib/#{dirname}.rb", 'module Rubocop', 'module RuboCop'
           patch "lib/#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
           patch "#{name}.gemspec", 'Rubocop', 'RuboCop'
+          patch "spec/#{dirname}_spec.rb", 'Rubocop::', 'RuboCop::'
 
           patch "#{name}.gemspec", /^end/, <<~RUBY
 
@@ -136,9 +137,7 @@ module RuboCop
             end
           RUBY
 
-          patch 'Gemfile', /\z/, <<~RUBY
-            gem 'rspec'
-          RUBY
+          patch_gemfile
 
           patch 'README.md', /^gem '#{name}'$/, "gem '#{name}', require: false"
 
@@ -149,6 +148,15 @@ module RuboCop
 
               $ bundle exec rake 'new_cop[#{classname}/SuperCoolCopName]'
           MESSAGE
+        end
+
+        private def patch_gemfile
+          path = root_path / 'Gemfile'
+          file = path.read
+          return if file =~ (/gem ('|")rspec('|")/)
+          patch 'Gemfile', /\z/, <<~RUBY
+            gem 'rspec'
+          RUBY
         end
 
         private def put(path, content)
@@ -163,7 +171,7 @@ module RuboCop
           path = root_path / path
           file = path.read
           raise "Cannot apply patch for #{path} because #{pattern} is missing" unless file.match?(pattern)
-          path.write file.sub(pattern, replacement)
+          path.write file.gsub(pattern, replacement)
         end
 
         private def root_path
