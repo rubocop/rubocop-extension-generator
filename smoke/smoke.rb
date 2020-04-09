@@ -31,5 +31,5 @@ Dir.mktmpdir('-rubocop-extension-generator-smoke') do |base_dir|
 
   system('bundle', 'install', exception: true, chdir: gem_dir)
   system('bundle', 'exec', 'rake', 'new_cop[Smoke/Foo]', exception: true, chdir: gem_dir)
-  system('bundle', 'exec', 'rspec', exception: true, chdir: gem_dir)
+  system('bundle', 'exec', 'rake', 'spec', exception: true, chdir: gem_dir)
 end

@@ -106,13 +106,9 @@ module RuboCop
             end
           RUBY
 
+          patch_rakefile
+
           patch "Rakefile", /\z/, <<~RUBY
-
-            require 'rspec/core/rake_task'
-
-            RSpec::Core::RakeTask.new(:spec) do |spec|
-              spec.pattern = FileList['spec/**/*_spec.rb']
-            end
 
             desc 'Generate a new cop with a template'
             task :new_cop, [:cop] do |_task, args|
@@ -150,13 +146,30 @@ module RuboCop
           MESSAGE
         end
 
-        private def patch_gemfile
+        private def has_rspec?
           path = root_path / 'Gemfile'
           file = path.read
-          return if file =~ (/gem ('|")rspec('|")/)
+          return true if file =~ (/gem ('|")rspec('|")/)
+        end
+
+        private def patch_gemfile
+          return if has_rspec?
           patch 'Gemfile', /\z/, <<~RUBY
             gem 'rspec'
           RUBY
+        end
+
+        private def patch_rakefile
+          return if has_rspec?
+          patch 'Rakefile', /\z/, <<~RUBY
+
+            require 'rspec/core/rake_task'
+
+            RSpec::Core::RakeTask.new(:spec) do |spec|
+              spec.pattern = FileList['spec/**/*_spec.rb']
+            end
+          RUBY
+
         end
 
         private def put(path, content)
