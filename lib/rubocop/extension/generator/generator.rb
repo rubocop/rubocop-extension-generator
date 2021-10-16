@@ -7,7 +7,18 @@ module RuboCop
         end
 
         def generate
-          system('bundle', 'gem', name, exception: true)
+          system(
+            'bundle',
+            'gem',
+            name,
+            '--no-rubocop',
+            '--no-changelog',
+            '--no-mit',
+            '--no-coc',
+            '--test=rspec',
+            '--ci=circle',
+            exception: true
+          )
 
           put "lib/#{name}.rb", <<~RUBY
             # frozen_string_literal: true
@@ -99,6 +110,12 @@ module RuboCop
           patch "lib/#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
           patch "#{name}.gemspec", 'Rubocop', 'RuboCop'
 
+          "spec/rubocop/#{classname.downcase}_spec.rb".tap do |example_spec|
+            patch example_spec, "Rubocop::#{classname}", "RuboCop::#{classname}"
+            patch example_spec, "Rubocop::#{classname}::VERSION", "RuboCop::#{classname}::VERSION"
+            patch example_spec, /expect\(false\).to eq\(true\)/, 'expect(true).to eq(true)'
+          end
+
           patch "#{name}.gemspec", /^end/, <<~RUBY
 
               spec.add_runtime_dependency 'rubocop'
@@ -122,10 +139,7 @@ module RuboCop
                 exit!
               end
 
-              github_user = `git config github.user`.chop
-              github_user = 'your_id' if github_user.empty?
-
-              generator = RuboCop::Cop::Generator.new(cop_name, github_user)
+              generator = RuboCop::Cop::Generator.new(cop_name)
 
               generator.write_source
               generator.write_spec
@@ -136,8 +150,8 @@ module RuboCop
             end
           RUBY
 
-          patch 'Gemfile', /\z/, <<~RUBY
-            gem 'rspec'
+          patch 'Gemfile', /^(\s*gem\s['"]rspec['"].*)$/, <<~RUBY
+            gem "rspec"
           RUBY
 
           patch 'README.md', /^gem '#{name}'$/, "gem '#{name}', require: false"
