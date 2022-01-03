@@ -1,5 +1,9 @@
 # master (unreleased)
 
+## v0.4.0
+
+* [#13](https://github.com/rubocop/rubocop-extension-generator/pull/13): Fix an `ArgumentError` when RuboCop 1.22.0 or higher.
+
 ## v0.3.0
 
 * [#8](https://github.com/rubocop/rubocop-extension-generator/pull/8): Enable to work "Exclude" in AllCops section.
