@@ -66,5 +66,5 @@ You can execute a smoke test with `ruby smoke/smoke.rb`. Check it is success bef
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/rubocop-hq/rubocop-extension-generator.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rubocop/rubocop-extension-generator.
 

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A generator of RuboCop's custom cops gem}
   spec.description   = %q{A generator of RuboCop's custom cops gem}
-  spec.homepage      = "https://github.com/rubocop-hq/rubocop-extension-generator"
+  spec.homepage      = "https://github.com/rubocop/rubocop-extension-generator"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
   spec.licenses = ['MIT']
 

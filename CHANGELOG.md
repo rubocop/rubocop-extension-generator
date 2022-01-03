@@ -2,19 +2,19 @@
 
 # v0.3.0
 
-* [#8](https://github.com/rubocop-hq/rubocop-extension-generator/pull/8): Enable to work "Exclude" in AllCops section
+* [#8](https://github.com/rubocop/rubocop-extension-generator/pull/8): Enable to work "Exclude" in AllCops section
 
 # v0.2.3
 
-* [#7](https://github.com/rubocop-hq/rubocop-extension-generator/pull/7): Improve CLI
+* [#7](https://github.com/rubocop/rubocop-extension-generator/pull/7): Improve CLI
 
 # v0.2.2
 
-* [#5](https://github.com/rubocop-hq/rubocop-extension-generator/pull/5): Add `require: false` to sample code in README
+* [#5](https://github.com/rubocop/rubocop-extension-generator/pull/5): Add `require: false` to sample code in README
 
 # v0.2.1
 
-* [#4](https://github.com/rubocop-hq/rubocop-extension-generator/pull/4): Exclude main lib file from Naming/FileName cop
+* [#4](https://github.com/rubocop/rubocop-extension-generator/pull/4): Exclude main lib file from Naming/FileName cop
 
 # v0.2.0
 

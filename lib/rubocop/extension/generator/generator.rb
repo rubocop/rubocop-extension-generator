@@ -26,8 +26,8 @@ module RuboCop
           put "lib/#{dirname}/inject.rb", <<~RUBY
             # frozen_string_literal: true
 
-            # The original code is from https://github.com/rubocop-hq/rubocop-rspec/blob/master/lib/rubocop/rspec/inject.rb
-            # See https://github.com/rubocop-hq/rubocop-rspec/blob/master/MIT-LICENSE.md
+            # The original code is from https://github.com/rubocop/rubocop-rspec/blob/master/lib/rubocop/rspec/inject.rb
+            # See https://github.com/rubocop/rubocop-rspec/blob/master/MIT-LICENSE.md
             module RuboCop
               module #{classname}
                 # Because RuboCop doesn't yet support plugins, we have to monkey patch in a
