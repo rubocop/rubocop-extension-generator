@@ -1,5 +1,9 @@
 # master (unreleased)
 
+## v0.5.1
+
+* [#17](https://github.com/rubocop/rubocop-extension-generator/pull/17): Add missing `require bundler`.
+
 ## v0.5.0
 
 * [#16](https://github.com/rubocop/rubocop-extension-generator/pull/16): Fix CLI error caused by bundler newer than v2.3.9.
