@@ -137,7 +137,11 @@ module RuboCop
             gem 'rspec'
           RUBY
 
-          patch 'README.md', /^gem '#{name}'$/, "gem '#{name}', require: false"
+          if Gem::Version.new(Bundler::VERSION) >= Gem::Version.new('2.3.9')
+            patch 'README.md', /\$ bundle add #{name}$/, "\$ bundle add #{name} --require=false"
+          else
+            patch 'README.md', /^gem '#{name}'$/, "gem '#{name}', require: false"
+          end
 
           puts
           puts <<~MESSAGE
