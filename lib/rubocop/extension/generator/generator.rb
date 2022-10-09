@@ -80,6 +80,9 @@ module RuboCop
           TEXT
 
           put '.rubocop.yml', <<~YML
+            require:
+              - rubocop/cop/internal_affairs
+
             Naming/FileName:
              Exclude:
                - lib/#{name}.rb
