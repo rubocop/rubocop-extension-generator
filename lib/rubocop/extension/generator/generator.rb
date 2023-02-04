@@ -7,7 +7,7 @@ module RuboCop
         end
 
         def generate
-          system('bundle', 'gem', name, exception: true)
+          system('bundle', 'gem', '--test=rspec',  name, exception: true)
 
           put "lib/#{name}.rb", <<~RUBY
             # frozen_string_literal: true
@@ -131,10 +131,6 @@ module RuboCop
 
               puts generator.todo
             end
-          RUBY
-
-          patch 'Gemfile', /\z/, <<~RUBY
-            gem 'rspec'
           RUBY
 
           if Gem::Version.new(Bundler::VERSION) >= Gem::Version.new('2.3.9')
