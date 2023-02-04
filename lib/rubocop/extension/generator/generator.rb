@@ -7,7 +7,7 @@ module RuboCop
         end
 
         def generate
-          system('bundle', 'gem', '--test=rspec',  name, exception: true)
+          system('bundle', 'gem', '--linter=rubocop', '--test=rspec',  name, exception: true)
 
           put "lib/#{name}.rb", <<~RUBY
             # frozen_string_literal: true
