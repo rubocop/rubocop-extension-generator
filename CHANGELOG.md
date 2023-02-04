@@ -1,5 +1,9 @@
 # master (unreleased)
 
+## v0.5.2
+
+* [#19](https://github.com/rubocop/rubocop-extension-generator/pull/19): Support `bundle gem` gem name placeholder.
+
 ## v0.5.1
 
 * [#17](https://github.com/rubocop/rubocop-extension-generator/pull/17): Add missing `require bundler`.
