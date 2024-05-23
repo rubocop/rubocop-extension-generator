@@ -33,13 +33,13 @@ Dir.mktmpdir('-rubocop-extension-generator-smoke') do |base_dir|
     chdir: gem_dir,
   )
   stdout_json = stdout.lines.find { |l| l.start_with?('{') }
-  failures = JSON.parse(stdout_json)['examples'].select { |example| example['status'] == 'failed' }
+  unexpected_failures = JSON.parse(stdout_json)['examples'].
+    select { |example| example['status'] != 'passed' }.
+    select { |example| example.dig('exception', 'class') != 'RSpec::Expectations::ExpectationNotMetError' }.
+    map do |example|
+      [example['full_description'], example.dig('exception', 'message')].join(': ')
+    end
 
-  unexpected_failures = failures.map { |failure| failure['full_description'] } - [
-    'RuboCop::Smoke has a version number',
-    'RuboCop::Smoke does something useful',
-    'RuboCop::Cop::Smoke::Foo registers an offense when using `#bad_method`',
-  ]
   if !unexpected_failures.empty?
     raise "rspec failed. Unknown failures:\n#{unexpected_failures.join("\n")}"
   end

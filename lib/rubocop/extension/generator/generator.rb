@@ -155,18 +155,18 @@ module RuboCop
           path.write(content)
         end
 
-        private def patch(path, pattern, replacement)
+        private def patch(path, pattern, replacement, all: false)
           puts "update #{path}"
           path = root_path / path
           file = path.read
           raise "Cannot apply patch for #{path} because #{pattern} is missing" unless file.match?(pattern)
-          path.write file.sub(pattern, replacement)
+          path.write(all ? file.gsub(pattern, replacement) : file.sub(pattern, replacement))
         end
 
         private def patch_all(glob, pattern, replacement)
           Dir[root_path / glob].each do |path|
             if File.read(path).match(pattern)
-              patch(path.sub(root_path.to_s, '').sub(%r|^/|, ''), pattern, replacement)
+              patch(path.sub(root_path.to_s, '').sub(%r|^/|, ''), pattern, replacement, all: true)
             end
           end
         end
