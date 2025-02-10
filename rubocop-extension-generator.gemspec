@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{A generator of RuboCop's custom cops gem}
   spec.description   = %q{A generator of RuboCop's custom cops gem}
   spec.homepage      = "https://github.com/rubocop/rubocop-extension-generator"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.licenses = ['MIT']
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'rubocop', '>= 1.22.0'
+  spec.add_runtime_dependency 'rubocop', '>= 1.72.2'
   spec.add_runtime_dependency 'bundler'
   spec.add_runtime_dependency 'activesupport'
 end
