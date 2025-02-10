@@ -20,11 +20,12 @@ Dir.mktmpdir('-rubocop-extension-generator-smoke') do |base_dir|
   gemspec[/spec\.summary.+/] = 'spec.summary = "a gem for smoke testing"'
   gemspec.gsub!(/^.+spec\.description.+$/, '')
   gemspec.gsub!(/^.+spec\.homepage.+$/, '')
-  gemspec.gsub!(/^.+spec\.metadata.+$/, '')
+  gemspec.gsub!(/^.+spec\.metadata\["(homepage_uri|source_code_uri|changelog_uri)"\].+$/, '')
 
   gemspec_path.write gemspec
 
   system('bundle', 'install', exception: true, chdir: gem_dir)
   system('bundle', 'exec', 'rake', 'new_cop[Smoke/Foo]', exception: true, chdir: gem_dir)
+  system('bundle', 'exec', 'rubocop', '-a', exception: true, chdir: gem_dir)
   system('bundle', 'exec', 'rake', 'spec', exception: true, chdir: gem_dir)
 end
