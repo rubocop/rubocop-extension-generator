@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rubocop/extension/generator/version"
 require "rubocop/extension/generator/cli"
 require "rubocop/extension/generator/generator"

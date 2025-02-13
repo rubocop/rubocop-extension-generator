@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Smoke testing for this gem
 
 require 'tmpdir'
