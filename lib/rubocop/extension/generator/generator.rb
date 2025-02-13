@@ -100,6 +100,7 @@ module RuboCop
           patch "lib/#{dirname}.rb", 'module Rubocop', 'module RuboCop'
           patch "lib/#{dirname}/version.rb", 'module Rubocop', 'module RuboCop'
           patch "#{name}.gemspec", 'Rubocop', 'RuboCop'
+          2.times { patch "spec/#{dirname}_spec.rb", 'Rubocop::', 'RuboCop::' }
 
           patch "#{name}.gemspec", /^end/, <<~RUBY
 
