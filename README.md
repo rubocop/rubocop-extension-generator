@@ -26,27 +26,32 @@ Creating gem 'rubocop-foobar'...
       create  rubocop-foobar/Gemfile
       create  rubocop-foobar/lib/rubocop/foobar.rb
       create  rubocop-foobar/lib/rubocop/foobar/version.rb
+      create  rubocop-foobar/sig/rubocop/foobar.rbs
       create  rubocop-foobar/rubocop-foobar.gemspec
       create  rubocop-foobar/Rakefile
       create  rubocop-foobar/README.md
       create  rubocop-foobar/bin/console
       create  rubocop-foobar/bin/setup
       create  rubocop-foobar/.gitignore
-Initializing git repo in /tmp/tmp.Gu7G94wX00/rubocop-foobar
+      create  rubocop-foobar/LICENSE.txt
 Gem 'rubocop-foobar' was successfully created. For more information on making a RubyGem visit https://bundler.io/guides/creating_gem.html
 create rubocop-foobar/lib/rubocop-foobar.rb
-create rubocop-foobar/lib/rubocop/foobar/inject.rb
+create rubocop-foobar/lib/rubocop/foobar/plugin.rb
 create rubocop-foobar/lib/rubocop/cop/foobar_cops.rb
 create rubocop-foobar/config/default.yml
 create rubocop-foobar/spec/spec_helper.rb
 create rubocop-foobar/.rspec
-update lib/rubocop/foobar.rb
+create rubocop-foobar/.rubocop.yml
 update lib/rubocop/foobar.rb
 update lib/rubocop/foobar/version.rb
+update README.md
+update rubocop-foobar.gemspec
 update rubocop-foobar.gemspec
 update rubocop-foobar.gemspec
 update Rakefile
 update Gemfile
+update README.md
+delete sig
 
 It's done! You can start developing a new extension of RuboCop in rubocop-foobar.
 For the next step, you can use the cop generator.
@@ -67,4 +72,3 @@ You can execute a smoke test with `ruby smoke/smoke.rb`. Check it is success bef
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/rubocop/rubocop-extension-generator.
-
