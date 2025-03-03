@@ -1,5 +1,9 @@
 # master (unreleased)
 
+## v0.6.0
+
+* [#27](https://github.com/rubocop/rubocop-extension-generator/pull/27): Support RuboCop extension plugin.
+
 ## v0.5.2
 
 * [#19](https://github.com/rubocop/rubocop-extension-generator/pull/19): Support `bundle gem` gem name placeholder.
