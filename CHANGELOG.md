@@ -1,5 +1,9 @@
 # master (unreleased)
 
+## v0.6.1
+
+* [#28](https://github.com/rubocop/rubocop-extension-generator/pull/28): Prevent errors when internally using cops that rely on configuration options.
+
 ## v0.6.0
 
 * [#27](https://github.com/rubocop/rubocop-extension-generator/pull/27): Support RuboCop extension plugin.
