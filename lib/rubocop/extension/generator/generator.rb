@@ -91,6 +91,7 @@ module RuboCop
           put '.rubocop.yml', <<~YML
             plugins:
               - rubocop-internal_affairs
+              - #{name}
 
             Naming/FileName:
               Exclude:
