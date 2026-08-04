@@ -1,5 +1,7 @@
 # master (unreleased)
 
+* [#32](https://github.com/rubocop/rubocop-extension-generator/pull/32): Generate extensions that register cops for lazy loading, following RuboCop 1.89.0+.
+
 ## v0.6.2
 
 * [#30](https://github.com/rubocop/rubocop-extension-generator/pull/30): Handle changes to the gem install declaration in Bundler's generated README.

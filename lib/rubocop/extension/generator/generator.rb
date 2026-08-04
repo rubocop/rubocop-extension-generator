@@ -20,7 +20,7 @@ module RuboCop
             require_relative '#{dirname}/version'
             require_relative '#{dirname}/plugin'
 
-            require_relative '#{cops_file_name.sub(/\.rb$/, '').sub(%r{^lib/}, '')}'
+            require_relative '#{department_file_name.sub(/\.rb$/, '').sub(%r{^lib/}, '')}'
           RUBY
 
           put "lib/#{dirname}/plugin.rb", <<~RUBY
@@ -57,8 +57,18 @@ module RuboCop
             end
           RUBY
 
-          put cops_file_name, <<~RUBY
+          put department_file_name, <<~RUBY
             # frozen_string_literal: true
+
+            module RuboCop
+              module Cop
+                # Cops for the `#{classname}` department. The department's cops are
+                # registered for lazy loading and their files are loaded on demand.
+                module #{classname}
+                  extend LazyLoader
+                end
+              end
+            end
           RUBY
 
           put "config/default.yml", <<~YAML
@@ -108,7 +118,7 @@ module RuboCop
               spec.metadata['default_lint_roller_plugin'] = 'RuboCop::#{classname}::Plugin'
 
               spec.add_dependency 'lint_roller', '~> 1.1'
-              spec.add_dependency 'rubocop', '>= 1.72.2'
+              spec.add_dependency 'rubocop', '>= 1.89.0'
             end
           RUBY
 
@@ -133,7 +143,7 @@ module RuboCop
 
               generator.write_source
               generator.write_spec
-              generator.inject_require(root_file_path: '#{cops_file_name}')
+              generator.inject_registration
               generator.inject_config(config_file_path: 'config/default.yml')
 
               puts generator.todo
@@ -141,7 +151,7 @@ module RuboCop
           RUBY
 
           patch 'Gemfile', /\z/, <<~RUBY
-            gem 'rubocop', '>= 1.72.2'
+            gem 'rubocop', '>= 1.89.0'
             gem 'rspec'
           RUBY
 
@@ -200,8 +210,8 @@ module RuboCop
           @classname ||= name.split('-').last.camelcase
         end
 
-        private def cops_file_name
-          @cops_file_name ||= "lib/rubocop/cop/#{name.split('-').last}_cops.rb"
+        private def department_file_name
+          @department_file_name ||= "lib/rubocop/cop/#{name.split('-').last}.rb"
         end
 
         attr_reader :name
